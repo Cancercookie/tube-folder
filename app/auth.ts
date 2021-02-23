@@ -2,7 +2,7 @@ import * as path from "path";
 import {google} from "googleapis";
 import * as fs from "fs";
 import {Router} from "express";
-import {COLLECTIONS, instantiateDbHandler, UserSchema} from "./arango-utils";
+import {COLLECTIONS, instantiateDbHandler, IUserSchema} from "./arango-utils";
 import {getUserChannel} from "./youtube";
 import {ArangoError} from "arangojs/error";
 
@@ -24,7 +24,7 @@ authRouter.get("/init", async function (req, res) {
 
 async function _createNewUser(credentials: any) {
     let youtubeUserInfo = await getUserChannel().then(user => user);
-    let newUser: UserSchema = {
+    let newUser: IUserSchema = {
         credentials,
         youtubeUserInfo,
         _key: youtubeUserInfo.id
