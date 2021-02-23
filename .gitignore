@@ -460,3 +460,4 @@ fabric.properties
 # yarn v2
 
 /build/
+client_secret.json
